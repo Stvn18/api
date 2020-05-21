@@ -22,7 +22,7 @@ public class CredentialController {
     ) {
 
         if (credentialService.findByKey(key) != null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
         credentialService.saveKeyAndSharedSecret(key, sharedSecret);
