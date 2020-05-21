@@ -18,16 +18,32 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    /**
+     * Get message by ID
+     * @param id ID message
+     * @return Message
+     */
     @GetMapping("/message/{id}")
     public ResponseEntity<Message> doGetMessageById(@PathVariable Integer id) {
         return new ResponseEntity<>(messageService.getMessageById(id), HttpStatus.OK);
     }
 
+    /**
+     * Get messages by tag
+     * @param tag Tag message
+     * @return List of message by tag
+     */
     @GetMapping("/messages/{tag}")
     public ResponseEntity<List<Message>> doGetMessagesByTag(@PathVariable String tag) {
         return new ResponseEntity<>(messageService.doGetAllByTag(tag), HttpStatus.OK);
     }
 
+    /**
+     * Create new message
+     * @param msg Msg body
+     * @param messageBodyTags List tags message
+     * @return Unique identifier
+     */
     @PostMapping("/message")
     public ResponseEntity<Integer> doCreateMessage(
             @RequestParam("msg") String msg,

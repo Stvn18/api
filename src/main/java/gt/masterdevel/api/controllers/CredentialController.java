@@ -15,6 +15,12 @@ public class CredentialController {
     @Autowired
     private CredentialService credentialService;
 
+    /**
+     * Update credential
+     * @param key Key param
+     * @param sharedSecret Shared Secret
+     * @return status 204 or 403
+     */
     @PutMapping("/credential")
     public ResponseEntity doUpdateCredential(
             @RequestParam(value = "key") String key,
